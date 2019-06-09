@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Register</title> 
+	</head>
+	<body>
+		<center>
+			<h1>Welcome</h1>
+			<!-- form: send input to server 
+				method: GET,POST,, Action: path-->
+			<form action="reg" method="post">
+				<table border="1">
+					<tr>
+						<td>username</td>
+						<!-- input must have name -->
+						<td><input name="username" type="text" size="32"></td>
+					</tr>
+					<tr>
+						<td>password</td>
+						<td><input name="password" type="password" size="32"></td>
+					</tr>
+					<tr>
+						<td>nickname</td>
+						<td><input name="nickname" type="text" size="32"></td>
+					</tr>					
+					<tr>
+						<td>age</td>
+						<td><input name="age" size="32"></td>
+					</tr>			
+					<tr>
+						<td align="center" colspan="2">
+						<!-- submit to form -->
+						<input type="submit" value="Register"></td>
+					</tr>
+				</table>
+			</form>
+		</center>
+	</body>
+</html>

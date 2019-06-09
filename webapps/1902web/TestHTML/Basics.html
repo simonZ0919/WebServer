@@ -1,0 +1,71 @@
+<!DOCTYPE html><!--html version  -->
+<html><!--root tag  -->
+	<head><!--for browser  -->
+	<!--use utf-8 decode  -->
+	<meta charset="UTF-8">
+	<!-- page title -->
+	<title>Resume</title>
+	</head>
+	<body><!--for user  -->
+		<!-- main title -->
+		<h1 align="center">Resume</h1>
+		<!--horizontal rule -->
+		<hr>	
+		<h2>Personal Information</h2>
+		<!-- paragraph -->
+		<p> Name</p>
+		<p> Gender</p>
+		<hr>
+		
+		<!-- ul unordered list  -->		
+		<!--ol:  order list -->	
+		<ol type="1" start="1" >
+			<li> C++ </li>
+			<li> Java
+				<ul >
+					<li>Data Type</li>
+					<ul >
+						<li> Byte </li>
+						<li> integer</li>
+					</ul>
+					<li> API</li>				
+				</ul>
+			</li>
+			<li> Python</li>
+		</ol>
+		
+		<!-- defined list  -->
+		<dl>
+			<dt> title</dt>
+			<dd> sublist</dd>
+		</dl>
+		
+		<!-- header/atricle/footer: div, tag blocks-->
+		<!-- span: same line -->
+		<header>header</header>
+		<article>body</article>
+		<footer>tail</footer>
+		
+		<!--same line: i/em. b/strong, s/del. u -->
+		<!--space combined, use &nbsp: no-breaking space-->
+		This  is&nbsp;&nbsp;&nbsp; <u>&lt;underline&gt;</u><!-- <underline>  -->
+		
+		<!-- alt:alternative show, src:path, relative or absolute(http:) -->
+		<!-- width/height: pixel,or percentage of outer tag -->
+		<!--set heigth by original ratio, #:this page  -->
+		<br><img title="Google" width="250px"
+		src="../../myweb/logo.png" usemap="#mymap1">
+		<img alt="tedu" width="20%"
+		 src="https://www.baidu.com/img/bd_logo1.png" usemap="#mymap2">
+		 
+		 <!-- use map, id/name matche usemap, coords: corners/center,radius -->
+		 <!-- href:point to file, webpage(include http),open or download -->
+		 <map name="mymap1" id="mymap1">
+		 	<area shape="rect" coords="0,0,200,200" href="../../myweb/index.html">
+		 </map>
+		 <map name="mymap2" id="mymap2">
+		 	<area shape="circle" coords="100,100,50" href="https://www.baidu.com/">
+		 </map>
+		 
+	</body>
+</html>
