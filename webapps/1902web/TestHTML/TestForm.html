@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Test Form</title>
+</head>
+<body>
+	<!-- action: submit path, must have name -->
+	<!-- placeholder: default, maxlength -->
+	<form action="http://www.tmooc.cn/">
+		<input type="text" name="username" value="value" 
+		placeholder="user" maxlength="6" readonly="readonly">
+		<input type="password" name="password"><hr>
+		
+		<!-- radio: single selection -->
+		<input checked="checked" type="radio" name="gender" value="male" id="me">
+		<!-- click text for selection -->
+		<label for="me">male</label>
+		<input type="radio" name="gender" value="female" id="fe">
+		<label for="fe">female</label><hr>
+		
+		<!-- checkbox: multi selection -->
+		<input type="checkbox" name="sport" value="sport" id="sp">
+		<label for="sp">sport</label>
+		<input checked="checked" type="checkbox" name="music" value="sport" id="mc">
+		<label for="mc">music</label><hr>
+		
+		<!-- date, file, textarea, selection -->
+		<input type="date" name="birthday"><hr>
+		<input type="file" name="file"><hr>
+		
+		<textarea name="info" rows="3" cols="20">introduce</textarea><hr>
+		
+		birthplace:<select name="birthplace">
+		<option selected="selected" value="sh">Shanghai</option>
+		<option value="bj">Beijing</option>
+		</select><hr>
+		
+		<!-- hidden data -->
+		<input type="hidden" name="a" value="b">
+		
+		<input type="submit" value="register">
+		<input type="reset" value="reset">		
+		<input type="button" value="button">
+	</form>
+</body>
+</html>

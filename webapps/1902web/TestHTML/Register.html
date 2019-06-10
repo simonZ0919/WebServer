@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+<form action="register">
+<table border="1" cellspacing="0">
+	<caption>Register Table</caption>
+	<tr>
+		<td>Username:</td>
+		<td><input type="text" name="username"></td>
+	</tr>
+	
+	<tr>
+		<td>Password:</td>
+		<td><input type="password" name="password"></td>
+	</tr>
+	
+	<tr>
+		<td>Confirm password:</td>
+		<td><input type="password" name="confirmPassword"></td>
+	</tr>
+	
+	<tr>
+		<td>Nickname:</td>
+		<td><input type="text" name="nickname"></td>
+	</tr>
+	
+	<tr>
+		<td>Gender:</td>
+		<td>
+		<input type="radio" name="gender" value="male" id="male">    
+		<label for="male">Male</label>
+		<input type="radio" name="gender" value="female" id="female">    
+		<label for="female">Female</label>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>Hobbies:</td>
+		<td>
+		<input type="checkbox" name="sport" value="sport" id="sp">
+		<label for="sp">sport</label>
+		<input type="checkbox" name="music" value="sport" id="mc">
+		<label for="mc">music</label>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>Birth:</td>
+		<td><input type="date" name="birth"></td>
+	</tr>
+	
+	<tr>
+		<td>Photo:</td>
+		<td><input type="file" name="photo"></td>
+	</tr>
+	
+	<tr>
+		<td>Location:</td>
+		<td><select name="Location">
+			<option value="Sh">Shanghai</option>
+			<option value="Bj">Beijing</option>
+		</select></td>
+	<tr>
+	
+	<tr>
+		<td>Comment:</td>
+		<td><textarea name="Info"rows="3" cols="20">type here</textarea>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>Verification code</td>
+		<td><img src="../timg.jpg" width="80"></td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td colspan="2" align="center">
+		<input type="submit" name="register">
+		<input type="reset" name="reset"></td>
+	</tr>	
+</table>
+</form>
+</body>
+</html>
