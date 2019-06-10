@@ -4,9 +4,30 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
 <body>
+<!-- hyperlink, href=path, target:new page -->
 	<a href="Basics.html" target="_blank">HTML Basic</a><hr>
 	<a href="https://www.microsoft.com/zh-cn/"
 	target="_blank"><img src="../Microsoft.png"></a>
+	<hr>
+	
+	<!-- table border:line cellspacing: outer margin, cellpadding:inner padding -->
+	<table border="1px" cellspacing="0" cellpadding="5">
+		<tr><!--table row  -->
+			<!-- colspan, rowspan -->
+			<td align="center" colspan="2">data1</td><!-- table column -->
+			<td rowspan="2">data2</td>
+		</tr>
+		<tr>
+			<td rowspan="2">data4</td>
+			<td>data</td>
+		</tr>	
+		<tr>
+			<td align="center" colspan="2">data3</td>
+		</tr>		
+	</table>
+	
+	
 </body>
 </html>
