@@ -1,22 +1,78 @@
 <!DOCTYPE html>
+<!-- three ways to import CSS: tag attribute, selector, link -->
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="ImportStyle.css">
+
+<!-- overwrite outer style -->
 <style type="text/css">
-	/* element selector */
-	h1{
-	  background-color: yellow;
+	/* element selector for name */
+	div{
+	  color: red;
+	}
+	
+	/* select unique id */
+	#d4{
+	 	border: 1px solid purple;
+	}
+	
+	/* select common class */
+	.divClass{
+		background-color: green;
+	}
+	
+	/* all elements */
+	*{
+		border: 1px solid red;
+		background-color: gray;
+	}
+	
+	/*select attribute*/
+	input[type="text"]{
+		color: yellow;
+	}
+	input[type="password"] {
+		color: blue;
+	}
+	
+	/* select child tag */
+	/* parent child: all subs, parent>child: one level below */
+	ul{
+		background-color: green;
+	}
+    ul>li>ul>li {
+	 	background-color: pink;
 	}
 </style>
 
-<link rel="stylesheet" href="ImportStyle.css">
+
 </head>
 <body>
-	<!-- set style for tag -->
-	<div style="border: 1px solid red">Title1</div>
-	<span style="background-color: green">Title2</span>
-	<h1>Hello</h1>
+	<!-- set style for tag, top priority -->
+	<div style="color: white">Div1</div>
+	<div class="divClass">Div2</div>
+	<div class="divClass">Div3</div>
+	<div id="d4">Div4</div>
+	<div class="divClass">Div5</div>
+	
+	<input type="text" value="username">
+	<input type="password" value="password">
+	
+	<ul>
+		<li>Sport
+			<ul>
+			<li> Scoeer</li>
+			<li> Tennis</li>
+			</ul>	
+		</li>
+		<li>Music
+			<ul>
+			<li> Hiphop</li>
+			</ul>	
+		</li>	
+	</ul>
 </body>
 </html>
