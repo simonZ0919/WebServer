@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- three ways to import CSS: tag attribute, selector, link -->
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="ImportStyle.css">
+
+<!-- overwrite outer style -->
+<style type="text/css">
+
+	/* element selector for name */
+	div{color: red;}
+	
+	/* select unique id */
+	#d4{ border: 1px solid purple;}
+	
+	/* select common class */
+	.divClass{ background-color: green;}
+	
+	/* all elements */
+ 	*{
+		border: 1px solid black;
+/*  		background-color: gray; */
+ 	} 
+	
+	/*select attribute*/
+	input[type="text"]{color: yellow;}
+	input[type="password"] {color: blue;}
+	
+	/* select child tag */
+	/* parent child: all subs, parent>child: one level below */
+	body>ul li{background-color: blue;}
+	ul>ul>li{background-color: green;}
+	
+	/* group selector: s1,s2{}  */
+	.C1{ background-color: #ffff00;}/* RGB: yellow */
+	#p2 {background-color: pink;}
+	.C1,#p2 {border: 1px solid rgb(0,0,255);}/* blue */
+
+	/* psudo-classes for mouse event */
+	a:visited {color: purple;}
+	a:link {color: orange;}/* unvisited */
+	a:hover {color: blue;}/* ater visited, link*/
+	a:active {color: green;}/*click, must after hover*/
+	
+	/* set image style */
+	#img{ 
+		width: 250px;/*element size*/
+		height: 100px;
+		background-image: url("../Microsoft.png");
+		background-size: 220px 50px;/* image size */
+		background-color:gray;
+		
+		background-repeat: no-repeat; /* no padding */
+		background-position: center center;/*50% 50%*/
+	}
+	
+	body {
+		border: 1px solid black;
+}
+</style>
+
+
+</head>
+<body>
+	<!-- set style for tag, top priority -->
+	<div style="color: white">Div1</div>
+	
+	<div class="divClass">Div2</div>
+	<div class="divClass">Div3</div>
+	
+	<div id="d4">Div4</div>
+	<div class="divClass">Div5</div>
+	
+	<input type="text" value="username">
+	<input type="password" value="password">
+	
+	<ul>
+		<li>Sport</li>
+		<ul>
+			<li> Scoeer</li>
+			<li> Tennis</li>
+		</ul>	
+		<li>Music</li>
+		<ul>
+			<li> Hiphop</li>
+		</ul>		
+	</ul>
+	
+	<h3 class="C1">h3</h3>
+	<p class="C1">p1</p>
+	<p id="p2">p2</p>
+	
+	<a href="https://www.163.com/">psudo_class</a>
+	
+	<div id="img">logo</div>
+</body>
+</html>

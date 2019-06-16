@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		/* size: only for block element */
+		width: 100px;
+		height: 100px;
+		background-color: pink;
+	}
+	#d1{
+		/* for single direction  */		
+		/* margin-top:10px;
+		margin-right: 10px;
+		margin-left: 20px;
+		margin-bottom: 20px;*/	
+		
+		margin:10px,10px,20px,20px;/* clockwise */
+		margin: 30px;/* 4 direction */
+		margin: 10px, 20px;/* top/bottom, left/right */
+		margin: 0,auto;/* horizontal center  */
+		
+		overflow: hidden;/* independent of sub element */
+	}
+	
+	#sub{
+		width: 50px;
+		height: 50px;
+		background-color: green;
+		
+		margin-top: 50px;
+	}
+	
+	#d2{
+		/* space: maximum of bottom(last), top(current)  */
+		margin-top: 50px;
+		
+		/* border: thickness style color */
+		/* border-bottom: 5px dashed green; */
+		border:5px dashed blue;
+		border-radius: 5px; /* 1/2 width: circle */
+		
+		/* set padding */
+		padding:10px;
+	}
+	
+	/* span border: change width,not change height */
+	span{border: 10px solid green;}
+	
+	#s1{
+		margin-left: 20px;
+		margin-right: 25px;
+		margin-top: 50px;
+	}
+	
+	#s2{ 
+		margin-left: 15px;/* sum neighboring margins  */
+		padding: 10px;/*not change height*/
+	}
+	body {
+		border: 1px solid blue;
+	}
+
+
+</style>
+</head>
+<body>
+	<div id="d1">
+		<div id="sub"></div>
+	</div>
+	<div id="d2">div2</div>
+	
+	<span id="s1">span1</span><span id="s2">span2</span>
+	
+	
+</body>
+</html>
