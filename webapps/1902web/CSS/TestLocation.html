@@ -16,8 +16,7 @@
 		background-color: yellow;
 		margin: 50px 0 0 50px;
 		/* relative to orgin position */
-		
-''
+		position:relative;
 		top: 30px;
 		right: -30p;/* left:30px */
 	}
@@ -39,15 +38,27 @@
 		left: 0;
 	}
 	
+	#fix{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		
+		/* fixed position in page */
+		position: fixed;
+		top:50px;
+		right: 50px;
+	}
+	
 </style>
 </head>
 <body>
 	<div>d1</div>
 	<div id="big">
-<!-- 		<div id="middle">
+	<div id="middle">
 		<div id="small"></div>
-		</div> -->
+		</div>
 	</div>
 	<div>d2</div>
+	<div id="fix">d3</div>
 </body>
 </html>
