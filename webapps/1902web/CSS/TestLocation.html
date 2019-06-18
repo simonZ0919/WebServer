@@ -49,16 +49,49 @@
 		right: 50px;
 	}
 	
+	#d3{
+		/* float to the right */
+		float: left;
+	}
+	
+	#d4{
+		float: right;
+	}
+	
+	#d5{
+		/* no float element on both sides */
+		clear: both;
+	}
+	
+	ul{
+		list-style-type: none;/* no dot */
+	}
+	
+	li {
+		width:80px;
+		float: left;
+	}	
 </style>
 </head>
 <body>
-	<div>d1</div>
-	<div id="big">
-	<div id="middle">
-		<div id="small"></div>
-		</div>
+<div>d1</div>
+<div id="big">
+<div id="middle">
+	<div id="small"></div>
 	</div>
-	<div>d2</div>
-	<div id="fix">d3</div>
+</div>
+<div>d2</div>
+<div id="fix">fixed</div>
+
+<div id="d3">d3</div>
+<div id="d4">d4</div>
+<div id="d5">d5</div>
+
+<ul>
+	<li>Index</li>
+	<li>Page1</li>
+	<li>Page2</li>
+</ul>
+	
 </body>
 </html>
