@@ -9,7 +9,24 @@
 
 <script type="text/javascript">
 /* insert JavaScript here */
-	alert("way2");
+	for(var i=0;i<5;i++){
+		console.log(i);// log results
+	}
+
+	// claim function, Way 1 
+	function sum(x,y){
+		return x+y;
+	}
+
+	// Way 2
+	// var fn2=function sun(x,y) {
+	// 	return x+y;
+	// }
+	alert(sum(3,5));
+	
+	var input=document.getElementById("myinput");
+	
+
 </script>
 </head>
 <body>
@@ -18,5 +35,6 @@
 onclick="alert('66'+6)"><!-- +: string -->
 <input type="button" value="test2" 
 onclick="alert('66'-6)"><!-- other: convert to number  -->
+<input type="text" id="myinput" placeholder="saysomething">
 </body>
 </html>
