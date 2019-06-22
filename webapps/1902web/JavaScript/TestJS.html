@@ -3,6 +3,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+	.red{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+	}
+
+	.green{
+		width: 100px;
+		height: 100px;
+		background-color: green;
+	}
+
+	.float{
+		float: left;
+	}
+
+</style>
+
 
 <!-- import javascript source  -->
 <script type="text/javascript" src="source.js"></script>
@@ -16,7 +35,7 @@
 	// claim function, Way 1: function func1(var){} 
 	// Way2: var n=function func2(var){}
 	// getElementById(): return element
-	// e.value: set value, e.innerText/innerHTML: set text
+	// e.value: set value, e.innerText/innerHTML: set html
 	
 	function calculator(operator) {
 		var n1=document.getElementById("num1").value;
@@ -47,8 +66,24 @@
 		document.getElementById("d1").innerText=result;
 	}
 
-	function color() {
-		
+	// add all color elements
+	function chgColor(color) {
+		var d2=document.getElementById("d2");
+		d2.innerHTML+="<div class='"+color+"'></div>";
+	}
+
+	// add squares
+	function paintBox(n){
+		var d3=document.getElementById("d3");
+		var color, s;
+		for(var i=0;i<n;i++){
+			for(var j=0;j<n;j++){
+				s=i*n+j;
+				color=s%2?"red":"green";
+				d3.innerHTML+="<div class='"+color+" float"+"'></div>";// draw one line
+			}
+			d3.innerHTML+="<div style='clear:left'></div>";//next line
+		}
 	}
 </script>
 </head>
@@ -69,7 +104,12 @@ onclick="alert('66'-6)"><!-- others: convert to number  -->
 <input type="button" value="/" onclick="calculator('divide')">
 <div id="d1"></div>
 
-<input type="button" value="red" onclick="">
-<input type="button" value="green" onclick="">
+<input type="button" value="red" onclick="chgColor('red')">
+<input type="button" value="green" onclick="chgColor('green')">
+<div id="d2"></div>
+
+<!-- draw puzzle pattern -->
+<input type="button" value="start" onclick="paintBox(5)">
+<div id="d3"></div>
 </body>
 </html>
