@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	function toAddress(){
+		// whether start with http
+		var reg=/^http/;
+		if(reg.test(i1.value))
+			location.href=i1.value;
+		else
+			location.href="http://"+i1.value;
+	}
+
+	/* click event: move picture for each click */
+	var x=0;
+	onclick=function(){
+		x+=10;
+		/* add inner style to element */
+		i3.style.marginLeft=x+"px";
+	}
+
+	/* execute after page load */
+	/* cursor action: onfocus, onblur */
+	onload=function(){
+		i2.value="ok";
+	}
+
+	/* set timer,interval:1000ms */
+	setInterval(function(){
+		x+=5;
+		/* add inner style to element */
+		i3.style.marginLeft=x+"px";
+	},1000);
+
+</script>
+</head>
+<body>
+<!-- confirm: confirm frame -->
+<a href="http://www.sina.com.cn/" 
+onclick="return confirm('Leave this page?')">sina</a><br>
+
+<!-- jump to typed address -->
+<input type="text" id="i1" placeholder="address">
+<input type="button" value="Go" onclick="toAddress()"><br>
+
+<input type="text" id="i2"><br>
+<img  id="i3" src="../Microsoft.png">
+</body>
+</html>

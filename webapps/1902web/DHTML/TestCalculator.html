@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		border: 4px solid #ccc;
+		border-radius: 4px;
+		width: 200px;
+		overflow: hidden;
+	}
+
+	input{
+		border: 4px solid #ccc;
+		border-radius: 4px;
+		width: 45px;
+		height: 45px;
+		float: left;
+		margin:4px 0 4px 4px;
+	}
+
+	/* text input: border change size */
+	input[type="text"]{
+		height: 37px;
+		padding: 0;
+		width: 135px;
+	}
+</style>
+
+<script type="text/javascript">
+	function action(str){
+		switch (str) {
+			case "C"://clear text
+				i1.value="";
+				break;
+			case "="://eval:execute code
+				i1.value=eval(i1.value);
+			break;
+			default:
+				i1.value+=str;//show text
+				break;
+		}
+	}
+	onload=function(){
+		var arr=["C",7,8,9,"/",4,5,6,"*",1,2,3,"-",0,".","=","+"];
+		for(var i=0;i<arr.length;i++){
+			d1.innerHTML+="<input type='button' value='"+arr[i]+
+			"' onclick='action(\""+arr[i]+"\")'>";
+		}
+	}
+
+</script>
+</head>
+<body>
+<div id="d1">
+	<input type="text" readonly="readonly" id="i1">
+</div>
+</body>
+</html>

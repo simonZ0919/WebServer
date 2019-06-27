@@ -32,9 +32,9 @@
 		console.log(i);// log results
 	}
 
-	// claim function, function func1(var){}, var n=function func2(var){}
-	// getElementById(): return element object
-	// e.value: set value, e.innerText/innerHTML: set html
+/* 	claim function, function func1(var){}, var n=function func2(var){}
+	getElementById(): return element object
+	e.value: set value, e.innerText/innerHTML: set html */
 	function calculator(operator) {
 		var n1=document.getElementById("num1").value;
 		var n2=document.getElementById("num2").value;
@@ -42,7 +42,6 @@
 
 		if (isNaN(n1) || isNaN(n2)) {
 			result="invalid data";
-
 		}
 		else{
 			switch (operator) {
@@ -79,21 +78,21 @@
 		}
 	}
 
-	// sort array by function, default: unicode
+	/* sort array by function, default: unicode */
 	var arr1=[1,5,0,3,9];
 	function sortfn(a,b){
 		return a-b;//aescending order
 	}
 	alert(arr1.sort(sortfn));
 
-	// split given strintg
+	/* split given strintg */
 	function splitStr(){
 		var arr=src.value.split(sp.value);
 		for(var i=0;i<arr.length;i++)
 			myul.innerHTML+="<li>"+arr[i]+"</li>";
 	}
 
-	// regular expression,/reg/mode
+	/* regular expression,/reg/mode */
 	function checkName(){
 		var reg=/^\w{6,10}$/;//6-10 chars
 		// equivalent expression
@@ -108,7 +107,7 @@
 	}
 	function checkPasswd(){
 		var reg=/^\w{6,10}$/;//6-10 chars
-		// equivalent expression
+		/* equivalent expression */
 		// var reg=new RegExp("^\\w{6,10}$");
 		if (reg.test(passwd.value)) {//whether matches
 			s2.className="pass";//change class name
@@ -150,10 +149,10 @@ onclick="alert('66'-6)"><!-- others: convert to number  -->
 <input type="button" value="split" onclick="splitStr()">
 <ul id="myul"></ul><hr>
 
-<!-- check input format, onsubmit: submit action (only valid inputs) -->
+<!-- check input format, onsubmit: "return false", cancel submit -->
 <!-- +: will execute both function -->
 <form action="https://www.baidu.com" 
-onsubmit="return checkName()+checkPasswd()==2;">
+	onsubmit="return checkName()+checkPasswd()==2;">
 	<!-- onblur: cursor out of focus -->
 	<input type="text" id="username" placeholder="username" onblur="checkName()">
 	<span id="s1">6-10 characters</span><br>
