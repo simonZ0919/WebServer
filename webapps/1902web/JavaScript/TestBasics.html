@@ -23,7 +23,7 @@
 </style>
 
 
-<!-- import javascript source  -->
+<!-- import javascript source?no js code in body  -->
 <script type="text/javascript" src="source.js"></script>
 
 <script type="text/javascript">
@@ -93,23 +93,32 @@
 			myul.innerHTML+="<li>"+arr[i]+"</li>";
 	}
 
-	// regular expression
-	function checkType(){
-		var reg=/^\w{6,10}$/;//only 6-10 chars
+	// regular expression,/reg/mode
+	function checkName(){
+		var reg=/^\w{6,10}$/;//6-10 chars
 		// equivalent expression
 		// var reg=new RegExp("^\\w{6,10}$");
 		if (reg.test(username.value)) {//whether matches
 			s1.className="pass";
+			return true;
 		}else{
 			s1.className="error";
-		}
-
-		if (reg.test(passwd.value)) {//whether matches
-			s2.className="pass";
-		}else{
-			s2.className="error";
+			return false;
 		}
 	}
+	function checkPasswd(){
+		var reg=/^\w{6,10}$/;//6-10 chars
+		// equivalent expression
+		// var reg=new RegExp("^\\w{6,10}$");
+		if (reg.test(passwd.value)) {//whether matches
+			s2.className="pass";//change class name
+			return true;
+		}else{
+			s2.className="error";
+			return false;
+		}
+	}
+
 </script>
 </head>
 <body>
@@ -127,26 +136,30 @@ onclick="alert('66'-6)"><!-- others: convert to number  -->
 <input type="button" value="-" onclick="calculator('subtract')">
 <input type="button" value="x" onclick="calculator('multiply')">
 <input type="button" value="/" onclick="calculator('divide')">
-<div id="d1"></div>
+<div id="d1"></div><hr>
 
 <!-- draw puzzle pattern -->
 <input type="text" id="rs" placeholder="row">
 <input type="text" id="cs" placeholder="column">
 <input type="button" value="paint" onclick="paintBox()"><br>
+<div id="d2"></div><hr>
 
 <!-- split string -->
 <input type="text" id="src" placeholder="string">
 <input type="text" id="sp" placeholder="delimiter">
 <input type="button" value="split" onclick="splitStr()">
+<ul id="myul"></ul><hr>
 
-<hr><div id="d2"></div>
-<ul id="myul"></ul>
-
-<!-- check input format -->
-<input type="text" id="username" placeholder="username">
-<span id="s1">6-10 characters</span><br>
-<input type="text" id="passwd" placeholder="password">
-<span id="s2">6-10 characters</span><br>
-<input type="button" value="submit" onclick="checkType()">
+<!-- check input format, onsubmit: submit action (only valid inputs) -->
+<!-- +: will execute both function -->
+<form action="https://www.baidu.com" 
+onsubmit="return checkName()+checkPasswd()==2;">
+	<!-- onblur: cursor out of focus -->
+	<input type="text" id="username" placeholder="username" onblur="checkName()">
+	<span id="s1">6-10 characters</span><br>
+	<input type="text" id="passwd" placeholder="password" onblur="checkPasswd()">
+	<span id="s2">6-10 characters</span><br>
+	<input type="submit" value="login" onclick="checkType()">
+</form>
 </body>
 </html>
