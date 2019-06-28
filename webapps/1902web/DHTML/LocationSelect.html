@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Select location</title>
+<style type="text/css">
+	img{
+		width: 150px;
+		height: 60px;
+	}
+	div{
+		background-color: yellow;
+		width: 300px;
+		height: 150px;
+		margin: 10px;
+	}
+</style>
+<script type="text/javascript">
+	var arr=[["Suzhou","Nanjing","Wuxi"],
+		["Hangzhou","NingBo","ShaoXing"],
+		["Guangzhou","Shenzhen","Foshan"]];
+	
+	function change(){
+		/* remove last options */
+		s2.innerHTML="<option>Please select</option>";
+		// var opt=s2.getElementsByTagName("option");
+		// for(var i=opt.length-1;i>0;i--){
+		// 	s2.removeChild(opt[i]);
+		// }
+		if (s1.value<0)
+			return;
+		var subArr=arr[s1.value];	
+		for(var i=0;i<subArr.length;i++){
+			var p=document.createElement("option");
+			p.innerText=subArr[i];
+			s2.appendChild(p);
+		}
+	}
+
+	function blink(obj) {
+		//get image from div
+		var img=obj.getElementsByTagName("img")[0];
+		if(img.style.display=="none")
+			img.style.display="block";
+		else	
+			img.style.display="none";
+	}
+</script>
+</head>
+<body>
+<!-- onchange: event for value change -->
+<select id="s1" onchange="change()">
+	<option value="-1">Please select</option>
+	<option value="0">Jiangsu</option>
+	<option value="1">Zhejiang</option>
+	<option value="2">Guangzhou</option>
+</select>
+<select id="s2">
+	<option>Please select</option>
+</select>
+
+<!-- this:current element -->
+<div onclick="blink(this)">
+	<img src="../Facebook.jpg">
+</div>
+<div onclick="blink(this)">
+	<img src="../Amazon.jpg">
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type="text/css">
+	img{
+		width: 200px;
+		height: 100px;
+		position:absolute;
+	}
+
+	div{
+		width: 200px;
+		height: 100px;
+		position: relative;
+		overflow: hidden;
+	}
+</style>
+<script type="text/javascript">
+	onload=function() {
+		var imgs=document.getElementsByTagName("img");
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].style.left=i*200+"px";
+		}
+	}
+
+	/* move picture  */
+	function move() {
+		var t=setInterval(function(){
+			var imgs=document.getElementsByTagName("img");
+			for(var i=0;i<imgs.length;i++){
+				var tmp=parseInt(imgs[i].style.left);//remove "px"
+		
+				if(tmp<=-200){
+					tmp=400;//return to right
+					clearInterval(t);//stop timer
+				}else{
+					tmp-=2;
+				}
+				imgs[i].style.left=tmp+"px";
+			}
+		},10);
+	}
+
+	/* call move every 3000ms, no () for parameter */
+	var timer=setInterval(move,2000);
+	
+	/* mouseover:stop */
+	function stop() {
+		clearInterval(timer);//stop timer
+	}
+
+	/* mouseout:start */
+	function start() {
+		clearInterval(timer);//close last timer
+		timer=setInterval(move,2000);
+	}
+
+	/* on/off focus */
+	onblur=function(){stop();}
+	onfocus=function(){start();}
+</script>
+<body>
+<div onmouseover="stop()" onmouseout="start()">
+	<img src="../Microsoft.png">
+	<img src="../Facebook.jpg">
+	<img src="../Amazon.jpg">
+</div>
+</body>
+</html>

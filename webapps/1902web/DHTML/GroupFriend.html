@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	onload=function(){
+		var ulArr=document.getElementsByClassName("c1");
+		//hide all lists
+		for(var i=0;i<ulArr.length;i++){
+			ulArr[i].style.display="none";
+		}
+	}
+
+	function show(li) {
+		//get ul from current li
+		var ul=li.getElementsByTagName("ul")[0];
+		//hide all other ul
+		var ulArr=document.getElementsByClassName("c1");
+		for(var i=0;i<ulArr.length;i++){
+			if (ul!=ulArr[i]){
+				ulArr[i].style.display="none";
+			}
+		}
+ 
+		//hide or show current ul
+		if(ul.style.display=="none")
+			ul.style.display="block";
+		else
+			ul.style.display="none";
+	}
+</script>
+</head>
+<body>
+<ul>
+	<li onclick="show(this)">friend
+		<ul class="c1">
+		<li>Bob</li>
+		<li>John</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+	<li onclick="show(this)">Relative
+		<ul class="c1">
+		<li>Mary</li>
+		<li>Hellen</li>
+		</ul>
+	</li>
+</ul>
+</body>
+</html>

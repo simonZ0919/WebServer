@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	img{
+		width: 200px;
+		height: 100px;
+	}
 
+	#d1{
+		width: 200px;
+		height: 100px;
+		overflow: hidden; 
+	}
 </style>
 <script type="text/javascript">
 	function toAddress(){
@@ -28,15 +37,23 @@
 	/* cursor action: onfocus, onblur */
 	onload=function(){
 		i2.value="ok";
+		
 	}
 
-	/* set timer,interval:1000ms */
+	/* eval(): string to js code */
+	/* set timer, change picture every 1000ms */
+	var x=0;
 	setInterval(function(){
-		x+=5;
+		var imgs=document.getElementsByTagName("img");
 		/* add inner style to element */
-		i3.style.marginLeft=x+"px";
+		imgs[x%3].style.display="none";//hide image
+		imgs[++x%3].style.display="block";//show image
 	},1000);
 
+	/* execute one time only */
+	setTimeout(function(){
+		alert("Time out");
+	},3000);
 </script>
 </head>
 <body>
@@ -49,6 +66,10 @@ onclick="return confirm('Leave this page?')">sina</a><br>
 <input type="button" value="Go" onclick="toAddress()"><br>
 
 <input type="text" id="i2"><br>
-<img  id="i3" src="../Microsoft.png">
+<div id="d1">
+	<img  id="i3" src="../Microsoft.png">
+	<img  id="i4" src="../Facebook.jpg">
+	<img  id="i5" src="../Amazon.jpg">
+</div>
 </body>
 </html>

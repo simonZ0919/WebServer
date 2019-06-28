@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+	* document.body:body
+	* creatElement:creat element
+	* paraent.appendChild(elem):add child element
+	* insertBefore(elem):add before
+	* removeChild(elem):remove child 
+	*/
+	function add2List() {
+		var li=document.createElement("li");
+		li.innerText=i1.value;
+		document.getElementsByTagName("ul")[0].appendChild(li);
+	}
+
+	function insert() {
+		var li=document.createElement("li");
+		li.innerText=i1.value;
+		ulist.insertBefore(li,gz);
+	}
+
+	function remove(){
+		ulist.removeChild(bj);
+	}
+</script>
+</head>
+<body>
+<input type="text" id="i1" placeholder="location">
+<input type="button" value="+" onclick="add2List()">
+<input type="button" value="insert" onclick="insert()">
+<input type="button" value="delete" onclick="remove()"><hr>
+
+<ul id="ulist">
+	<li id="bj">Beijing</li>
+	<li id="sh">Shanghai</li>
+	<li id="gz">Guangzhou</li>
+</ul>
+</body>
+</html>
