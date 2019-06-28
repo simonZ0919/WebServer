@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	div{
+		width:500px;
+		height: 500px;
+		background-color: yellowgreen;
+		overflow: hidden;
+	}
+	img{
+		position: absolute;
+		width: 50px;
+		height: 25px;
+	}
+
+</style>
 <script type="text/javascript">
 	/* 
 	* document.body:body
@@ -26,6 +40,44 @@
 	function remove(){
 		ulist.removeChild(bj);
 	}
+
+	function down(){
+		/* event.clientX/clientY: mouse coordinate */
+		var img=document.createElement("img");
+		img.src="../Facebook.jpg";//add element
+		//set image coordinate
+		img.style.left=event.clientX+"px";
+		img.style.top=event.clientY+"px";
+
+		/* get event object: event,target/srcElement */
+		var obj=event.target||event.srcElement;//either expression
+		obj.appendChild(img);
+	}
+	function up() {
+		console.log("mouse up");
+	}
+	function move(){
+		console.log("move");
+	}
+
+	/* insert random images every 10s */
+	setInterval(function(){
+		var img=document.createElement("img");
+		img.src="../Facebook.jpg";//add element
+		//set image coordinate
+		img.style.left=Math.floor(Math.random()*500)+"px";
+		img.style.top=Math.floor(Math.random()*500)+"px";
+		var div=document.getElementsByTagName("div")[0];
+		div.appendChild(img);
+	},10000)
+
+	/* click button when press Enter */
+	function keydown() {
+		var str=String.fromCharCode(event.keyCode);//char to string
+		console.log(event.keyCode+"="+str);
+		if(event.keyCode==13)// Enter:13
+			bt1.click();// trigger onclick event
+	}
 </script>
 </head>
 <body>
@@ -34,10 +86,18 @@
 <input type="button" value="insert" onclick="insert()">
 <input type="button" value="delete" onclick="remove()"><hr>
 
+<!-- key event -->
+<input type="text" onkeydown="keydown()" >
+<input type="button" id="bt1" value="Hi" onclick="alert('Hello!')">
+
+</form><hr>
 <ul id="ulist">
 	<li id="bj">Beijing</li>
 	<li id="sh">Shanghai</li>
 	<li id="gz">Guangzhou</li>
 </ul>
+
+<div onmousedown="down()" onmouseup="up()" onmousemove="move()">div1</div>
+
 </body>
 </html>
