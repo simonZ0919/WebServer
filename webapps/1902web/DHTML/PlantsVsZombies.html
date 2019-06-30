@@ -14,8 +14,22 @@
 		height: 120px;
 		position: absolute;
 	}
+	h3{
+		position:absolute;
+		color: yellow;
+		background-color: blue;
+	}
+	#succeed{
+		left: 5%;
+		top: 5%;
+	}
+	#fail{
+		right: 5%;
+		top: 5%;
+	}
 </style>
 <script type="text/javascript">
+	var sc=0,fl=0;
 	function adaptSize() {
 		var w=document.body.clientWidth;//width of body
 		var h=document.body.parentElement.clientHeight;//height of <html>
@@ -40,7 +54,14 @@
 		var h=document.body.parentElement.clientHeight-120;
 		img.style.top=Math.floor(Math.random()*h)+"px";
 		document.body.appendChild(img);
-	},1000)
+		
+		/* remove zombie at cursor */
+		img.onmouseover=function(){
+			succeed.innerText="Succeed: "+(++sc);
+			/* this:event.target, only in dynamic binding */
+			document.body.removeChild(this);
+		}
+	},100)
 
 	/* move zombie */
 	setInterval(function(){
@@ -49,10 +70,18 @@
 			var tmp=parseInt(imgs[i].style.left);
 			tmp-=2;
 			imgs[i].style.left=tmp+"px";
+
+			/* remove zombie out of bound */
+			if(tmp<=0){
+				document.body.removeChild(imgs[i]);
+				fail.innerText="Fail: "+(++fl);
+			}
 		}
 	},10)
 </script>
 </head>
 <body>
+	<h3 id="succeed">Succeed: 0</h3>
+	<h3 id="fail">Fail: 0</h3>
 </body>
 </html>
