@@ -9,13 +9,19 @@
 		height: 500px;
 		background-color: yellowgreen;
 		overflow: hidden;
+		position: relative;
 	}
 	img{
 		position: absolute;
 		width: 50px;
 		height: 25px;
 	}
-
+	.small{
+		width: 10px;
+		height: 10px;
+		border: 2px solid red;
+		position: absolute;
+	}
 </style>
 <script type="text/javascript">
 	/* 
@@ -42,34 +48,23 @@
 	}
 
 	function down(){
+		/* get event object: target/srcElement */
+		var obj=event.target||event.srcElement;
+
 		/* event.clientX/clientY: mouse coordinate */
 		var img=document.createElement("img");
+		/* set src attribute */
 		img.src="../Facebook.jpg";//add element
-		//set image coordinate
-		img.style.left=event.clientX+"px";
-		img.style.top=event.clientY+"px";
 
-		/* get event object: event,target/srcElement */
-		var obj=event.target||event.srcElement;//either expression
+		//set image coordinate, offset:absolute position
+		img.style.left=event.clientX-obj.offsetLeft+"px";
+		img.style.top=event.clientY-obj.offsetTop+"px";
+
 		obj.appendChild(img);
 	}
 	function up() {
 		console.log("mouse up");
 	}
-	function move(){
-		console.log("move");
-	}
-
-	/* insert random images every 10s */
-	setInterval(function(){
-		var img=document.createElement("img");
-		img.src="../Facebook.jpg";//add element
-		//set image coordinate
-		img.style.left=Math.floor(Math.random()*500)+"px";
-		img.style.top=Math.floor(Math.random()*500)+"px";
-		var div=document.getElementsByTagName("div")[0];
-		div.appendChild(img);
-	},10000)
 
 	/* click button when press Enter */
 	function keydown() {
@@ -78,6 +73,26 @@
 		if(event.keyCode==13)// Enter:13
 			bt1.click();// trigger onclick event
 	}
+
+	/* randomly insert 10 divs */
+	onload=function(){
+		var d=document.getElementsByTagName("div")[0];
+		for(var i=0;i<10;i++){
+			var elem=document.createElement("div");
+			elem.className="small";
+			/* random position */
+			elem.style.left=Math.floor(Math.random()*500)+"px";
+			elem.style.top=Math.floor(Math.random()*500)+"px";
+			d.appendChild(elem);
+			
+			elem.onmouseover=function(){
+				/* event.target: event source */
+				d.removeChild(event.target);
+			}
+		}
+	}
+
+	
 </script>
 </head>
 <body>
@@ -86,18 +101,19 @@
 <input type="button" value="insert" onclick="insert()">
 <input type="button" value="delete" onclick="remove()"><hr>
 
-<!-- key event -->
+<!-- keyboard event -->
 <input type="text" onkeydown="keydown()" >
-<input type="button" id="bt1" value="Hi" onclick="alert('Hello!')">
+<input type="button" id="bt1" value="Hi" 
+onclick="alert('Hello!')"><hr>
 
-</form><hr>
+<!-- bind event -->
 <ul id="ulist">
 	<li id="bj">Beijing</li>
 	<li id="sh">Shanghai</li>
 	<li id="gz">Guangzhou</li>
 </ul>
 
-<div onmousedown="down()" onmouseup="up()" onmousemove="move()">div1</div>
+<div onmousedown="down()" onmouseup="up()">div1</div>
 
 </body>
 </html>

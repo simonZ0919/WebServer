@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	body{
+		margin:0;
+		background-image: url("../images/background1.jpg");
+		background-repeat: no-repeat;
+	}
+	img{
+		widows: 100px;
+		height: 120px;
+		position: absolute;
+	}
+</style>
+<script type="text/javascript">
+	function adaptSize() {
+		var w=document.body.clientWidth;//width of body
+		var h=document.body.parentElement.clientHeight;//height of <html>
+		/* change image size to window */
+		document.body.style.backgroundSize=w+"px"+" "+h+"px";
+	}
+
+	onload=function(){
+		adaptSize();
+	}
+
+	/* resize of window event */
+	onresize=function(){
+		adaptSize();
+	}
+
+	/* add zombie image */
+	setInterval(function(){
+		var img=document.createElement("img");
+		img.src="../images/zombie0.gif";
+		img.style.left=document.body.clientWidth+"px";
+		var h=document.body.parentElement.clientHeight-120;
+		img.style.top=Math.floor(Math.random()*h)+"px";
+		document.body.appendChild(img);
+	},1000)
+
+	/* move zombie */
+	setInterval(function(){
+		var imgs=document.getElementsByTagName("img");
+		for(var i=0;i<imgs.length;i++){
+			var tmp=parseInt(imgs[i].style.left);
+			tmp-=2;
+			imgs[i].style.left=tmp+"px";
+		}
+	},10)
+</script>
+</head>
+<body>
+</body>
+</html>

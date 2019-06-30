@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function allSelect() {
+		var obj=event.srcElement;
+		var arr=document.getElementsByName("item");
+		for(var i=0;i<arr.length;i++){
+			arr[i].checked=obj.checked;//select&deselect all
+		}
+	}
+
+	function compute(){
+		if(event.target.nodeName=="INPUT"){
+			var arr=document.getElementsByName("item");
+			var sum=0;
+			for(var i=0;i<arr.length;i++){
+				if(arr[i].checked){
+					sum+=parseInt(arr[i].value);
+				}
+			}
+			s.innerText="Total: $"+sum;
+		}
+	}
+</script>
+</head>
+<body onclick="compute()">
+<h3>Orders:</h3>
+<input type="checkbox" name="item" value="10">Book $10<br>
+<input type="checkbox" name="item" value="500">Iphone $500<br>
+<input type="checkbox" name="item" value="1000">Laptop $1000<br>
+<input type="checkbox" onclick="allSelect()">All<br>
+<p id="s">Total:</p>
+</body>
+</html>

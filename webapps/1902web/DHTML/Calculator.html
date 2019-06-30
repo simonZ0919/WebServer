@@ -29,31 +29,36 @@
 </style>
 
 <script type="text/javascript">
-	function action(str){
-		switch (str) {
-			case "C"://clear text
-				i1.value="";
-				break;
-			case "="://eval:execute code
-				i1.value=eval(i1.value);
-			break;
-			default:
-				i1.value+=str;//show text
-				break;
+	function action(){
+		/* get event source */
+		var obj=event.target;
+		if(obj.type=="button"){//only for button
+			switch (obj.value) {
+				case "C"://clear text
+					i1.value="";
+					break;
+				case "="://eval:execute code
+					i1.value=eval(i1.value);
+					break;
+				default:
+					i1.value+=obj.value;//show text
+					break;
+			}
 		}
 	}
+
 	onload=function(){
 		var arr=["C",7,8,9,"/",4,5,6,"*",1,2,3,"-",0,".","=","+"];
 		for(var i=0;i<arr.length;i++){
-			d1.innerHTML+="<input type='button' value='"+arr[i]+
-			"' onclick='action(\""+arr[i]+"\")'>";
+			d1.innerHTML+="<input type='button' value='"+arr[i]+"'>";
 		}
 	}
 
 </script>
 </head>
 <body>
-<div id="d1">
+<!-- inner event pass outside(bubble) -->
+<div id="d1" onclick="action()">
 	<input type="text" readonly="readonly" id="i1">
 </div>
 </body>
