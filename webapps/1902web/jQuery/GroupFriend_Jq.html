@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		//hide all sub ul
+		$("li ul").hide();
+		//add event for li
+		$("body>ul>li").click(function(){
+			// toggle display on sub ul, this: event source(js object)
+			$(this).children().toggle();
+			// hide all other options
+			alert($(this).siblings().text());
+			$(this).siblings().children().hide();
+		})
+	})
+
+</script>
+</head>
+<body>
+<ul>
+	<li>friend
+		<ul>
+		<li>Bob</li>
+		<li>John</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+	<li>Relative
+		<ul>
+		<li>Mary</li>
+		<li>Hellen</li>
+		</ul>
+	</li>
+</ul>
+</body>
+</html>
