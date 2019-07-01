@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- import jQuery frame -->
+<script type="text/javascript" 
+src="../js/jquery-3.4.1.js"></script>
+
+<script type="text/javascript">
+	/* $=jQuery, jQuery(function)*/
+	$(function(){// onload=function(){}
+		//b1.onclick=function(){}
+		$("#b1").click(function(){
+			var jqObj=$("#i1");// get text object 
+			//jq to js, jsObj=jqObj.get(0), or
+			var jsObj=jqObj[0];
+			alert(jsObj.value);
+		})
+
+		$("#b2").click(function(){
+			var jsObj=document.getElementById("i1");
+			// js to jq
+			var jqObj=$(jsObj);
+			alert(jqObj.val());//jsObj.value
+		})
+
+		/* operations: elem.append(d)/before()/after()/remove() */
+		$("#add").click(function(){
+			// create element
+			var list=$("<li>"+$("#i2").val()+"</li>");
+			$("ul").append(list);// add element
+		})
+
+		$("#ins").click(function(){
+			//var list=$("<li>"+$("#i2").val()+"</li>");
+			var list=$("<li></li>");
+			list.text($("#i2").val());//set text
+			$("#gz").before(list);// insert before
+		})
+
+		$("#del").click(function(){
+			$("#bj").remove();//remove elemnt
+		})
+	})
+
+</script>
+</head>
+<body>
+	<input type="text" id="i1">
+	<input type="button" value="jq2js" id="b1">
+	<input type="button" value="js2jq" id="b2">	<hr>
+
+	<input type="text" id="i2" placeholder="location">
+	<input type="button" value="+" id="add">
+	<input type="button" value="insert" id="ins">
+	<input type="button" value="delete" id="del"><hr>
+
+	<ul>
+	<li id="bj">Beijing</li>
+	<li id="sh">Shanghai</li>
+	<li id="gz">Guangzhou</li>
+	</ul>
+</body>
+</html>
