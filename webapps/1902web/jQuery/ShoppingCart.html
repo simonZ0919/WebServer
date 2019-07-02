@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shopping Cart</title>
+<style type="text/css">
+h1{
+	text-align: center;
+}
+table{
+	width: 80%;
+	margin:0 auto;
+	border: 1px solid blue;
+	/* merger border */
+	border-collapse: collapse;
+}
+td,th{
+	border:1px solid blue;
+}
+</style>
+<script type="text/javascript" 
+	src="../js/jquery-3.4.1.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	var total=0;
+	$(":button[value='add to cart']").click(function(){
+		var row=$("<tr></tr>");
+		for(var i=0;i<2;i++){
+			// get item name/value, eq(i): index
+			var tmp=
+			$(this).parent().siblings().eq(i).text();
+			row.append($("<td>"+tmp+"</td>"));
+		}
+
+		var subtract=$("<input type='button' value='-'>");
+		var value=$("<span>1<span>");
+		var add=$("<input type='button' value='+'>");
+		
+		var num=$("<td></td>");
+		num.append(subtract).append(value).append(add);
+
+		var cost=$("<td>"+row.children().eq(1).text()+"</td>");
+		var del=
+		$("<td><input type='button' value='delete'></td>");
+
+		row.append(num).append(cost).append(del);
+		$("#total").before(row);
+		
+		del.children("input").click(function(){
+			$(this).parent().parent().remove();
+
+		})
+
+		subtract.click(function(){
+			var n=$(this).next().text();
+			if(n>1){
+				$(this).next().text(--n);
+				cost.text(row.children().eq(1).text()*n);
+			}
+		})
+
+		add.click(function(){
+			var n=parseInt($(this).prev().text());
+			$(this).prev().text(++n);
+			cost.text(row.children().eq(1).text()*n);
+		})
+	})
+})
+</script>
+</head>
+<body>
+<h1>Items</h1>	
+<table>
+	<tr>
+		<th>Name</th><th>Price</th>
+		<th>Storage</th><th>Rate</th>
+		<th>Action</th>
+	</tr>
+	
+	<tr>
+		<td>Notebook</td><td>20</td><td>25</td><td>96%</td>
+		<td><input type="button" value="add to cart"></td>
+	</tr>
+	<tr>
+		<td>Keyboard</td><td>50</td><td>15</td><td>98%</td>
+		<td><input type="button" value="add to cart"></td>
+	</tr>
+	<tr>
+		<td>Monitor</td><td>100</td><td>10</td><td>96%</td>
+		<td><input type="button" value="add to cart"></td>
+	</tr>
+</table>
+
+<h1>Shopping Cart</h1>
+<table>
+	<tr>
+		<th>Name</th><th>Price</th>
+		<th>Number</th><th>Sum</th><th>Action</th>
+	</tr>
+	<tr id="total">
+		<td colspan="5">Summary: </td>
+	</tr>
+</table>
+</body>
+</html>

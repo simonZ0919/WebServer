@@ -34,13 +34,34 @@
 				$("select:last").append(opt);
 			}
 		})
+
+		// add staff information to the table
+		$(":button[value='add']").click(function(){
+			var row=$("<tr></tr>");
+			for( var i=0;i<3;i++){
+				var col=$("<td></td>");
+				// assing text to column
+				col.text($("input[type='text']")[i].value);
+				//add to row
+				row.append(col);
+			}
+			// create delete button
+			var b=
+			$("<td><input type='button' value='delete'></td>");
+			row.append(b);
+			$("table").append(row);	
+
+			b.children("input").click(function(){
+				$(this).parent().parent().remove();//remove current row
+			})
+		})
 	})
 
 </script>
 </head>
 <body>
 <ul>
-	<li>friend
+	<li>Friend
 		<ul>
 		<li>Bob</li>
 		<li>John</li>
@@ -63,6 +84,21 @@
 </select>
 <select>
 	<option>Please select</option>
-</select>
+</select><hr>
+
+<input type="text" placeholder="name">
+<input type="text" placeholder="age">
+<input type="text" placeholder="salary">
+<input type="button" value="add"><hr>
+<table border="1" width="50%" align="center">
+	<caption>Staff List</caption>
+	<tr>
+		<th>Name</th>
+		<th>Age</th>
+		<th>Salary</th>
+		<th>Action</th>
+	</tr>
+</table>
+
 </body>
 </html>
