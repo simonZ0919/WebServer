@@ -3,19 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+<script type="text/javascript" 
+	src="../js/jquery-3.4.1.js"></script>
 
 <script type="text/javascript">
-	$(function(){
+	var arr=[["Suzhou","Nanjing","Wuxi"],
+	["Hangzhou","NingBo","ShaoXing"],
+	["Guangzhou","Shenzhen","Foshan"]];
+	
+	$(function(){//onload function 
 		//hide all sub ul
 		$("li ul").hide();
 		//add event for li
 		$("body>ul>li").click(function(){
 			// toggle display on sub ul, this: event source(js object)
 			$(this).children().toggle();
+
 			// hide all other options
-			alert($(this).siblings().text());
 			$(this).siblings().children().hide();
+		})
+		
+		// add event to first selection 
+		$("select:first").change(function(){
+			//clear second selection 
+			$("select:last").html("<option>Please seletct</option>");
+			var subArr=arr[$(this).val()];
+			for(var i=0;i<subArr.length;i++){
+				var opt=$("<option></option>");
+				opt.text(subArr[i]);
+				$("select:last").append(opt);
+			}
 		})
 	})
 
@@ -29,9 +46,7 @@
 		<li>John</li>
 		</ul>
 	</li>
-</ul>
 
-<ul>
 	<li>Relative
 		<ul>
 		<li>Mary</li>
@@ -39,5 +54,15 @@
 		</ul>
 	</li>
 </ul>
+
+<select onchange="change()">
+	<option>Please select</option>
+	<option value="0">Jiangsu</option>
+	<option value="1">Zhejiang</option>
+	<option value="2">Guangzhou</option>
+</select>
+<select>
+	<option>Please select</option>
+</select>
 </body>
 </html>

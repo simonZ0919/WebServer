@@ -4,6 +4,7 @@
 {
 	"version": "0.2.0",
 	"configurations": [
+
 		{
 			"name": "Launch Chrome 127.0.0.1",
 			"type": "chrome",
@@ -11,6 +12,13 @@
 			"port": 9279,
 			"webRoot": "${workspaceFolder}",
 			"url": "http://127.0.0.1:51545/p/WebServer/webapps/1902web/JavaScript/TestJS.html?_cmAuth\u003dpcxjmadsjc"
-		}
-	]
+		}	
+,{
+  "name": "Launch Chrome 127.0.0.1 (1)",
+  "type": "chrome",
+  "request": "launch",
+  "port": 9242,
+  "webRoot": "${workspaceFolder}",
+  "url": "http://127.0.0.1:51545/p/WebServer/webapps/1902web/jQuery/GroupFriend_Jq.html?_cmAuth\u003dpcxjmadsjc"
+}]
 }
