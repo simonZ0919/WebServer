@@ -23,7 +23,7 @@ td,th{
 
 <script type="text/javascript">
 $(function(){
-	var total=0;
+	var sum=0;
 	$(":button[value='add to cart']").click(function(){
 		var row=$("<tr></tr>");
 		for(var i=0;i<2;i++){
@@ -46,27 +46,53 @@ $(function(){
 
 		row.append(num).append(cost).append(del);
 		$("#total").before(row);
-		
+		sumCost();// compute sum of price
+
 		del.children("input").click(function(){
 			$(this).parent().parent().remove();
-
+			sumCost();
 		})
 
+		// subtract number
 		subtract.click(function(){
 			var n=$(this).next().text();
 			if(n>1){
 				$(this).next().text(--n);
-				cost.text(row.children().eq(1).text()*n);
+				var p=$(this).parent().prev().text();//single price
+				cost.text(p*n);
+
+				sumCost();
 			}
 		})
 
+		//increase number
 		add.click(function(){
 			var n=parseInt($(this).prev().text());
 			$(this).prev().text(++n);
-			cost.text(row.children().eq(1).text()*n);
+
+			var p=$(this).parent().prev().text();
+			cost.text(p*n);			
+
+			sumCost();
 		})
 	})
 })
+
+	var total=0;
+	function sumCost() {
+		var total=0;
+		//each();traverse each row in table 2
+		$("table:eq(1) tr").each(function(){
+			var m=$(this).children().eq(3).text();
+			m=parseInt(m); //convert to number
+			// numbers only
+			if(!isNaN(m)){
+				total+=m;
+			} 
+
+			$("#total>td").text("Summary: "+total);
+		})
+	}
 </script>
 </head>
 <body>
@@ -79,7 +105,7 @@ $(function(){
 	</tr>
 	
 	<tr>
-		<td>Notebook</td><td>20</td><td>25</td><td>96%</td>
+		<td>Notebook</td><td>20</td><td>25</td><td>95%</td>
 		<td><input type="button" value="add to cart"></td>
 	</tr>
 	<tr>

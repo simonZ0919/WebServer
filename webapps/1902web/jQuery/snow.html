@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	img{
+		position: absolute;
+	}
+	body{
+		background-color: black;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery-3.4.1.js">
+</script>
+<script type="text/javascript">
+	setInterval(function(){
+		var img=$("<img src='../snow.png'>");
+		
+		//size of screen
+		var w=document.body.parentElement.clientWidth;
+		var h=document.body.parentElement.clientHeight;
+
+		//snow randowm size: 20-40, random position at top
+		var sz=Math.floor(Math.random()*20)+20;
+		var left=Math.floor(Math.random()*(w-sz));
+		img.css({"width":sz+"px","height":sz+"px",
+		"left":left+"px"});
+
+		img.animate({"top":h-sz+"px"},2000+Math.floor(Math.random()*2000));
+		$(document.body).append(img);
+	},10);
+</script>
+</head>
+<body>
+
+</body>
+</html>

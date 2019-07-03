@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<style type="text/css">
+	img{
+		width: 200px;
+		height: 100px;
+		position: relative;
+	}
+</style>
 <!-- import jQuery frame -->
 <script type="text/javascript" 
 src="../js/jquery-3.4.1.js"></script>
@@ -43,8 +49,43 @@ src="../js/jquery-3.4.1.js"></script>
 		$("#del").click(function(){
 			$("#bj").remove();//remove elemnt
 		})
+
+		//hover: onmouseover, onmouseout
+		$("img").hover(function(){
+			$(this).animate({"width":"250px","height":"150px"},500)//zoom in
+		},function(){
+			$(this).animate({"width":"200px","height":"100px"},500)//zoom out
+		});
+
 	})
 
+	function action(type) {
+		switch (type) {
+			case "hide":
+				$("img").hide(2000,function(){
+					alert("hidden");//after hidden
+				});break;
+			
+			case "show":
+				$("img").show(1000);break;
+			
+			case "up":
+				$("img").slideUp(2000);break;			
+						
+			case "in":
+				$("img").fadeIn(2000);break;
+			
+			// animation from style
+			case "df":
+				$("img").animate({"left":"100px"},1000)
+				.animate({"left":"0","top":"100"},1000);
+		}	
+	}
+	
+	//triggert event 
+	setTimeout(function() {
+		$(":button:last").trigger("click");
+	}, 3000);
 </script>
 </head>
 <body>
@@ -61,6 +102,13 @@ src="../js/jquery-3.4.1.js"></script>
 	<li id="bj">Beijing</li>
 	<li id="sh">Shanghai</li>
 	<li id="gz">Guangzhou</li>
-	</ul>
+	</ul><hr>
+
+	<input type="button" value="hide" onclick="action('hide')">
+	<input type="button" value="show" onclick="action('show')"> 
+	<input type="button" value="slide up" onclick="action('up')">
+	<input type="button" value="fade in" onclick="action('in')">
+	<input type="button" value="user defined" onclick="action('df')"><hr>
+	<img src="../Amazon.jpg">
 </body>
 </html>
